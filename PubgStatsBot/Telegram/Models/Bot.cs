@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using PubgStatsBot.Telegram.Commands;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 
@@ -8,16 +8,17 @@ namespace PubgStatsBot.Telegram.Models
 {
     public class Bot
     {
-        private static IConfiguration _configuration;
         private static TelegramBotClient botClient;
-        private static List<Command> commandsList;
+        private static IEnumerable<ICommand> commandsList;
 
-        public Bot(IConfiguration configuration)
+        public Bot()
         {
-            _configuration = configuration;
-        }               
+            commandsList = new List<ICommand>();
+        }
 
-        public static IReadOnlyList<Command> Commands => commandsList.AsReadOnly();
+        public static IReadOnlyList<ICommand> Commands => commandsList.ToList().AsReadOnly();
+
+        public static void RegisterCommands(IEnumerable<ICommand> commands) => commandsList = commands;
 
         public static async Task<TelegramBotClient> GetBotClientAsync()
         {
@@ -26,9 +27,6 @@ namespace PubgStatsBot.Telegram.Models
                 return botClient;
             }
 
-            commandsList = new List<Command>();
-            commandsList.Add(new StartCommand());
-            //TODO: Add more commands
             botClient = new TelegramBotClient(AppSettings.BotKey);
             var hook = $"{AppSettings.HostUrl}api/telegram/Message/update";
             await botClient.SetWebhookAsync(hook);

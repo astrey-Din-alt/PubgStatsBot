@@ -2,13 +2,13 @@
 using TGBot = Telegram.Bot;
 using TGTypes = Telegram.Bot.Types;
 
-namespace PubgStatsBot.Telegram.Models
+namespace PubgStatsBot.Telegram.Commands
 {
-    public class StartCommand : Command
+    public class StartCommand : ICommand
     {
-        public override string Name => @"/start";
+        public string Name => @"/start";
 
-        public override bool Contains(TGTypes.Message message)
+        public bool Contains(TGTypes.Message message)
         {
             if (message.Type != TGTypes.Enums.MessageType.Text)
                 return false;
@@ -16,7 +16,7 @@ namespace PubgStatsBot.Telegram.Models
             return message.Text.Contains(Name);
         }
 
-        public override async Task Execute(TGTypes.Message message, TGBot.TelegramBotClient botClient)
+        public async Task Execute(TGTypes.Message message, TGBot.TelegramBotClient botClient)
         {
             var chatId = message.Chat.Id;
             await botClient.SendTextMessageAsync(chatId, "Hallo I'm Pubg Stats Bot", parseMode: TGTypes.Enums.ParseMode.Markdown);
