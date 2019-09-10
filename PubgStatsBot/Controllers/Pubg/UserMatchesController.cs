@@ -7,11 +7,11 @@ namespace PubgStatsBot.Controllers
 {
     [Route("api/pubg/[controller]")]
     [ApiController]
-    public class UsersMatchesController : ControllerBase
+    public class UserMatchesController : ControllerBase
     {
         private readonly IUserService _userService;
 
-        public UsersMatchesController(IUserService userService)
+        public UserMatchesController(IUserService userService)
         {
             _userService = userService;
         }
