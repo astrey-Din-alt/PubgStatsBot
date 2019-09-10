@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace PubgStatsBot.Controllers.Telegram
 {
-    [Route("api/telegram/[controller]")]
+    [Route("api/telegram/[controller]/update")]
     [ApiController]
     public class MessageController
     {

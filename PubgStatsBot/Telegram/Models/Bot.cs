@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -29,7 +30,7 @@ namespace PubgStatsBot.Telegram.Models
             commandsList.Add(new StartCommand());
             //TODO: Add more commands
             botClient = new TelegramBotClient(AppSettings.BotKey);
-            var hook = string.Format(AppSettings.HostUrl, "api/telegram/message/update");
+            var hook = $"{AppSettings.HostUrl}api/telegram/Message/update";
             await botClient.SetWebhookAsync(hook);
             return botClient;
         }

@@ -43,7 +43,7 @@ namespace PubgStatsBot
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "PubgStatBot API");
                 c.RoutePrefix = string.Empty;
             });
-            //Bot.GetBotClientAsync().Wait();
+            Bot.GetBotClientAsync().Wait();
         }
     }
 }
