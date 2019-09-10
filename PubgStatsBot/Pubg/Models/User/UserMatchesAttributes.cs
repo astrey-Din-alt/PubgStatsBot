@@ -2,7 +2,7 @@
 
 namespace PubgStatsBot.Pubg.Models.User
 {
-    public class UserAttributes
+    public class UserMatchesAttributes
     {
         public string TitleId { get; set; }
         public string ShardId { get; set; }

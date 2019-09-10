@@ -18,7 +18,7 @@ namespace PubgStatsBot.Pubg.Services
             _configuration = configuration;
         }
 
-        public async Task<User> GetUserMatchesAsync(string name)
+        public async Task<UserMatches> GetUserMatchesAsync(string name)
         {
             string path = _configuration["Pubg:ApiRoot"] + $"players?filter[playerNames]={name}";
             using (HttpClient client = new HttpClient())
@@ -29,11 +29,11 @@ namespace PubgStatsBot.Pubg.Services
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
 
-                User user = null;
+                UserMatches user = null;
                 HttpResponseMessage response = await client.GetAsync(path);
                 if (response.IsSuccessStatusCode)
                 {
-                    user = await response.Content.ReadAsAsync<User>();
+                    user = await response.Content.ReadAsAsync<UserMatches>();
                 }
                 return user;
             }

@@ -18,9 +18,6 @@
   <ItemGroup>
     <Folder Include="Pubg\Commands\" />
     <Folder Include="Pubg\Queries\" />
-    <Folder Include="Telegramm\Models\" />
-    <Folder Include="Telegramm\Commands\" />
-    <Folder Include="Telegramm\Queries\" />
   </ItemGroup>
 
 </Project>

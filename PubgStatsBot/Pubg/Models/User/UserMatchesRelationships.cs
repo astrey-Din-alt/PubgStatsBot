@@ -2,7 +2,7 @@
 
 namespace PubgStatsBot.Pubg.Models.User
 {
-    public class UserRelationships
+    public class UserMatchesRelationships
     {
         public UserRelationshipAssets Assets { get; set; }
         public UserRelationshipMatches Matches { get; set; }

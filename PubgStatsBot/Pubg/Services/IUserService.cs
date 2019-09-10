@@ -5,6 +5,6 @@ namespace PubgStatsBot.Pubg.Services
 {
     public interface IUserService
     {
-        Task<User> GetUserMatchesAsync(string name);
+        Task<UserMatches> GetUserMatchesAsync(string name);
     }
 }

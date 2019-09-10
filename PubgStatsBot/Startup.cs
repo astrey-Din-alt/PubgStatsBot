@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using PubgStatsBot.Pubg.Services;
+using PubgStatsBot.Telegram.Models;
 
 namespace PubgStatsBot
 {
@@ -35,7 +36,6 @@ namespace PubgStatsBot
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -43,6 +43,7 @@ namespace PubgStatsBot
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "PubgStatBot API");
                 c.RoutePrefix = string.Empty;
             });
+            //Bot.GetBotClientAsync().Wait();
         }
     }
 }

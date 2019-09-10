@@ -17,7 +17,7 @@ namespace PubgStatsBot.Controllers
         }
 
         [HttpGet("{name}", Name = "GetUserMatches")]
-        public async Task<User> GetAsync(string name)
+        public async Task<UserMatches> GetAsync(string name)
         {
             return await _userService.GetUserMatchesAsync(name);
         }
