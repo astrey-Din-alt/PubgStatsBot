@@ -1,9 +1,7 @@
 ﻿using PubgStatsBot.Pubg.Services;
-using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-
 using TGTypes = Telegram.Bot.Types;
 
 namespace PubgStatsBot.Telegram.Commands
@@ -32,7 +30,7 @@ namespace PubgStatsBot.Telegram.Commands
             var chatId = message.Chat.Id;
             var userName = message.Text.Split(' ')[1];
             var partisipantsStats = await _matchService.GetLastMatchStatsByUser(userName);
-            await client.SendTextMessageAsync(chatId, partisipantsStats.GetStatsString(), parseMode: TGTypes.Enums.ParseMode.Markdown);
+            await client.SendTextMessageAsync(chatId, partisipantsStats.GetStatsString(), parseMode: TGTypes.Enums.ParseMode.Default);
         }
     }
 }
